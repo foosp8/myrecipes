@@ -9,8 +9,9 @@ Rails.application.routes.draw do
 
   post 'recipes', to: 'recipes#create'
 
-  patch 'recipes/id', to: 'recipes#update'
+  patch 'recipes/:id', to: 'recipes#update'
 
+  delete 'recipes/:id', to: 'recipes#destroy'
 
   root "pages#home"
   get 'pages/home', to: 'pages#home'

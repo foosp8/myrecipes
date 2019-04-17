@@ -1,5 +1,7 @@
 <%= render 'shared/page_title', a: "Create New recipes" %>
 
+<%= link_to "Back to recipes listing", recipes_path %>
+
 <% if @recipe.errors.any? %>
   <%= pluralize(@recipe.errors.count, "error") %>
       prohibited this <%= @recipe.class %> from being sved:-
@@ -39,7 +41,7 @@
     </div>
     <% end %>
     <div class="col-md-4 col-md-offset-4 colormatch">
-      [ <%= link_to "Cancel request and return to recipes listing", recipes_path %> ]
+      [<%= link_to "Cancel request and return to recipes listing", recipes_path %>]
     </div>
   </div>
 </div>
