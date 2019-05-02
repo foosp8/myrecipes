@@ -1,4 +1,30 @@
-<%= render 'shared/page_title', a: "Your profile" %>
-<p><%= @chef.chefname %>
+<%= render 'shared/page_title', a: "Chef #{@chef.chefname}'s profile" %>
+<p><%= @chef.chefname.capitalize %> <br>
    <%= @chef.email %>
 </p>
+
+<div class="well col-md-8 col-md-offset-2">
+  <h4 class="center description"><strong>My Status: </strong></h4>
+  <hr/>
+  Name: <%= simple_format@chef.chefname.capitalize %>
+  My email: <%= @chef.email %>
+  <hr/>
+
+
+<div class="pull-right">
+    <p class="center">
+     <h4> Created recipes as below: </h4>
+    <p>
+<%= render "recipes/recipe", obj: @chef.recipes %>
+      <div class="right">
+       <small> Created <%= time_ago_in_words(@chef.created_at) %> ago </small>
+      </div>
+    </p>
+  </div>
+</div>
+
+<div class="chef-actions">
+  <%= link_to "Edit this chef", edit_chef_path(@chef), class: 'btn btn-xs btn-warning' %>
+  <%= link_to "Delete this chef", chef_path(@chef), method: :delete, data: { confirm: "Are you sure you want to delete?" }, class: "btn btn-xs btn-danger" %>
+  <%= link_to "Back to chef listing", chefs_path, class: "btn btn-xs btn-primary" %>
+</div>  
