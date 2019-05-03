@@ -1,8 +1,8 @@
-<h1>Chefs listing </h1>
-<!--<p> <% @chefs.each do |chef| %></p>
-  <%= chef.chefname %>:
-  <%= chef.email %>
-<% end %> -->
+<%= render 'shared/page_title', a: "Listing of all chefs" %>
+
+<div align="center">
+  <%= will_paginate %>
+</div>
 
 <% @chefs.each_with_index do |chef, index| %>
 <div class= "row">
@@ -13,6 +13,10 @@
   <div class= "col-md-8 well">
     <h4><%= index+1 %>) <%= link_to chef.chefname.capitalize, chef_path(chef) %></h4>
     <p><%= link_to chef.email %></p>
+
+<li><small><%= pluralize(chef.recipes.count, "recipe") if chef.recipes %>
+            </small></li>
+
     <p>
       <span class="quiet"><small>Created 
         <%= time_ago_in_words(chef.created_at) %> ago</small></span>
@@ -21,3 +25,7 @@
   </div>
 </div>
 <% end %>
+
+<div align="center">
+  <%= will_paginate %>
+</div>
