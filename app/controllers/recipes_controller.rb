@@ -11,9 +11,10 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(recipe_params)
-    @recipe.chef = Chef.first
+    @recipe.chef = current_chef
+    #@recipe.chef = Chef.last use for test b4 having session current_chef
     if @recipe.save
-      flash[:sucess] = "recipe was created sucessfully"
+      flash[:success] = "Recipe was created sucessfully!"
       redirect_to recipe_path(@recipe)
     else
       render "new"
