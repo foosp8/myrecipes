@@ -3,8 +3,8 @@ class ChefsController < ApplicationController
   before_action :require_same_user, only: [:edit, :update, :destroy]
 
   def index
-    @chefs = Chef.all
-    @chefs = Chef.paginate(page: params[:page], per_page: 5)
+      @chefs = Chef.all
+      @chefs = Chef.paginate(page: params[:page], per_page: 5)
   end
 
   def new
@@ -14,7 +14,7 @@ class ChefsController < ApplicationController
   def create
     @chef = Chef.new(chef_params)
     if @chef.save
-      session[:chef_id] = @chef_id
+      session[:chef_id] = @chef.id
       flash[:success] = "welcome #{@chef.chefname} to My recipe App"
       redirect_to chef_path(@chef)
     else
