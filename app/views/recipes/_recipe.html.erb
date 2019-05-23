@@ -7,9 +7,15 @@
   <div class= "col-md-8 well">
     <h4><%= link_to recipe.name, recipe_path(recipe) %></h4>
     <p><%= truncate(recipe.description, length: 150) %></p>
+
+    <% if recipe.ingredients.any? %>
+     <p>Ingredients: <%= render recipe.ingredients %></p>
+    <% end %>
+
     <p>
       <span class="quiet"><small>Created 
-        <%= time_ago_in_words(recipe.created_at) %> ago</small></span>
+        <%= time_ago_in_words(recipe.created_at) %> ago by
+        <%= recipe.chef.chefname.capitalize %></small></span>
     </p>
     <hr>
 
@@ -19,6 +25,7 @@
    	<%= link_to "Delete this recipe", recipe_path(recipe), method: :delete,
    	data: { confirm: "Are you sure you want to delete this recipe?" },
    	class: "btn btn-xs btn-danger" %>
+    <%= link_to "Back to recipes listing", recipes_path, class: "btn btn-xs btn-primary" %>
         </div>
         <% end %>
   </div>

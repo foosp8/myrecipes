@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :ingredients, except: [:destroy]
+
   get 'recipes', to: 'recipes#index', as: :recipes
 
   get 'recipes/new', to: 'recipes#new', as: :new_recipe

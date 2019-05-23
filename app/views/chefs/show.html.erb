@@ -14,19 +14,24 @@
   <% end %>
 </div>  
 
-<div align="center">
-    <p class="center">
-     <h4> Created recipes as below: </h4>
-    <p>
-</div>
 
-<div align="center">
-  <%= will_paginate @chef_recipes %>
-</div>
+<div class="well col-md-8 col-md-offset-2">
+  <% if @chef.recipes.count != 0 %>
 
-<%= render 'recipes/recipe', obj: @chef_recipes %>
+    <p class="center">
+       <b><h4> Created recipes as below: </h4><b>
+    <p>
+      <div align="center">
+        <%= will_paginate @chef_recipes %>
+      </div>
 
+    <%= render 'recipes/recipe', obj: @chef_recipes %>
 
-<div align= 'center'>
-  <%= will_paginate @chef_recipes %>
+    <div align= 'center'>
+      <%= will_paginate @chef_recipes %>
+    </div>
+
+  <% else %>
+    <h4 align = "center"> No recipe yet! </h4>
+  <% end %>
 </div>

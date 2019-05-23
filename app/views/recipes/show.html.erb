@@ -6,12 +6,16 @@
   <%= simple_format@recipe.description %>
   <hr/>
 
-  <div class="pull-right">
+  <% if @recipe.ingredients.any? %>
+    <p> Ingredients: <%= render @recipe.ingredients %> </p>
+  <% end %>
+
+  <div class="center">
     <p class="center">
       Created by:
     </p>
     <p>
-      <i><%= @recipe.chef.chefname %></i>
+      <i><%= link_to @recipe.chef.chefname, chef_path(@recipe.chef) %></i>
 
        <small> Created <%= time_ago_in_words(@recipe.created_at) %> ago </small>
  

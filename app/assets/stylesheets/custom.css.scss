@@ -1,3 +1,8 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+Add the input_checkbox styling to custom.css.scss
+.input_checkbox input {
+ width: auto !important;
+}
