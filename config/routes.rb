@@ -2,19 +2,17 @@ Rails.application.routes.draw do
 
   resources :ingredients, except: [:destroy]
 
-  get 'recipes', to: 'recipes#index', as: :recipes
+  #get 'recipes', to: 'recipes#index', as: :recipes
+  #get 'recipes/new', to: 'recipes#new', as: :new_recipe
+  #get 'recipes/:id', to: 'recipes#show', as: :recipe
+  #get 'recipes/:id/edit', to: 'recipes#edit', as: :edit_recipe
+  #post 'recipes', to: 'recipes#create'
+  #patch 'recipes/:id', to: 'recipes#update'
+  #delete 'recipes/:id', to: 'recipes#destroy'
 
-  get 'recipes/new', to: 'recipes#new', as: :new_recipe
-
-  get 'recipes/:id', to: 'recipes#show', as: :recipe
-
-  get 'recipes/:id/edit', to: 'recipes#edit', as: :edit_recipe
-
-  post 'recipes', to: 'recipes#create'
-
-  patch 'recipes/:id', to: 'recipes#update'
-
-  delete 'recipes/:id', to: 'recipes#destroy'
+  resources :recipes do
+    resources :comments, only: [:create]
+  end
 
   root "pages#home"
   get 'pages/home', to: 'pages#home'
