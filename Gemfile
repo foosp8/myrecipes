@@ -10,7 +10,7 @@ gem 'mini_racer', '~> 0.1.14'
 gem 'rails', '~> 5.0.7', '>= 5.0.7.2'
 # Use sqlite3 as the database for Active Record
 # Use Puma as the app server
-gem 'puma', '~> 3.0'
+gem 'puma', '~> 4.3'
 # Use SCSS for stylesheets
 gem 'will_paginate', '3.1.0'
 
